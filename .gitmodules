@@ -10,3 +10,7 @@
 [submodule "buddle/javacomplete"]
 	path = buddle/javacomplete
 	url = https://github.com/vim-scripts/javacomplete.git
+
+[submodule "buddle/NERDTree"]
+	path = buddle/NERDTree
+	url = https://github.com/scrooloose/nerdtree.git
