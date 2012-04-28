@@ -17,3 +17,6 @@
 [submodule "bundle/javacomplete"]
 	path = bundle/javacomplete
 	url = https://github.com/vim-scripts/javacomplete.git
+[submodule "bundle/NERDTree"]
+	path = bundle/NERDTree
+	url = https://github.com/scrooloose/nerdtree.git
