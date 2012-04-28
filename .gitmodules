@@ -20,3 +20,9 @@
 [submodule "bundle/NERDTree"]
 	path = bundle/NERDTree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/project"]
+	path = bundle/project
+	url = https://github.com/vim-scripts/project.tar.gz.git
