@@ -29,3 +29,6 @@
 [submodule "bundle/fuzzyfinder"]
 	path = bundle/fuzzyfinder
 	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "bundle/L9Library"]
+	path = bundle/L9Library
+	url = https://github.com/vim-scripts/L9.git
