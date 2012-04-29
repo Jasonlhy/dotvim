@@ -42,6 +42,8 @@ set hlsearch
 set incsearch
 " show matching when text indictor on it
 set showmatch
+" define key leader
+let mapleader =","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Appearence setting of document
@@ -126,8 +128,8 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTreeSection
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"open tree when entering vim
-autocmd VimEnter * NERDTree
+" open a tree
+map <leader>tr :NERDTreeFind<CR>
 "close tree when open a file
 let g:NERDTreeQuitOnOpen=1
 
@@ -138,15 +140,36 @@ let g:NERDTreeQuitOnOpen=1
 " Only show the tags for active buffer, others are folded 
 let g:Tlist_File_Fold_Auto_Close =1
 
-let mapleader =","
-" make tags for all file in the current directory
 map <leader>lt :call LoadCurrentFolder()<CR><CR>
 map <leader>ct :TlistClose<CR>
 map <leader>ut :TlistUpdate<CR>
+map <leader>ss :call SaveSession()<CR>
+map <leader>ls :call LoadSession()<CR>
+
+" make tags for all file in the current directory
 func! LoadCurrentFolder()
     :TlistAddFiles . *
     :TlistOpen 
 endfunc
+
+" save the session for taglist and program
+func! SaveSession()
+    :TlistSessionSave ../session/TagSession.vim
+    :mks! ../session/ProgramSession.vim
+endfunc
+
+" load the session for taglist and program 
+func! LoadSession()
+    :TlistSessionLoad../session/TagSession.vim
+    :source ../session/ProgramSession.vim
+    :TlistOpen
+endfunc
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => FuzzyFinder Section
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Find file 
+map <leader>ff :FufFile<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Java Programming Section
