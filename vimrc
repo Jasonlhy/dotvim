@@ -1,11 +1,19 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Pathogen Section
+""""""""""""""""""""""""""""""""""""""""""""""""""
 call pathogen#infect()
-let g:neocomplcache_enable_at_startup=1
 
-"" specail setting
-set guioptions-=T "remove toolbar
-set guioptions-=r "remove left scrollbar
-set guioptions-=l "remove right scrollbar
-set guifont=Monaco:h14 "great front
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => GUI Section
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_running")
+	"" specail setting
+	set guioptions-=T "remove toolbar
+	set guioptions-=r "remove left scrollbar
+	set guioptions-=l "remove right scrollbar
+	set guifont=Monaco:h14 "great front
+endif
 
 " Global setting of document
 set relativenumber "set line abosulte number
@@ -23,6 +31,9 @@ set t_Co=256 "set 256 colors
 colorscheme molokai "set  colortheme
 syntax on "display syntax in special color
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NeocomplCache section
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -49,24 +60,6 @@ let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-	
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-	
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-	
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -84,3 +77,19 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Java Section
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"java compile
+map <F3> :call CompileJava()<CR>
+func! CompileJava()
+	:w
+	:!javac -d ../bin "%"
+endfunc
+
+" run class
+	map <F4> :call RunClass()<CR>
+	func! RunClass()
+	:!java -cp "../bin" "%:t:r"
+endfunc
