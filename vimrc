@@ -69,18 +69,31 @@ set smarttab
 set shiftwidth=4
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"Turn backup off
+set nobackup
+set nowb
+set noswapfile
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NeocomplCache section
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
+
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
+
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
+
 " Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
+
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
+
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
@@ -117,18 +130,36 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 autocmd VimEnter * NERDTree
 "close tree when open a file
 let g:NERDTreeQuitOnOpen=1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Taglist Section
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Only show the tags for active buffer, others are folded 
+let g:Tlist_File_Fold_Auto_Close =1
+
+let mapleader =","
+" make tags for all file in the current directory
+map <leader>lt :call LoadCurrentFolder()<CR><CR>
+map <leader>ct :TlistClose<CR>
+map <leader>ut :TlistUpdate<CR>
+func! LoadCurrentFolder()
+    :TlistAddFiles . *
+    :TlistOpen 
+endfunc
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Java Programming Section
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"java compile
-autocmd FileType java map <F3> :call CompileJava()<CR>
+"java compile => to bin directory in the upper directory
+autocmd FileType java map <leader>cp :call CompileJava()<CR>
 func! CompileJava()
 	:w
 	:!javac -d ../bin "%"
 endfunc
 
-" run class
-autocmd FileType java map <F4> :call RunClass()<CR>
+" run class => to bin directory in the upper directory
+autocmd FileType java map <leader>run :call RunClass()<CR>
 	func! RunClass()
 	:!java -cp "../bin" "%:t:r"
 endfunc
