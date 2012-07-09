@@ -8,23 +8,25 @@ call pathogen#infect()
 " => GUI Section
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if has("gui_running")
-	"" specail setting
-	set guioptions-=T "remove toolbar
-	set guioptions-=r "remove left scrollbar
-	set guioptions-=l "remove right scrollbar
-	set guifont=Monaco:h14 "great front
-	
-	" Define dictionary.
-	let g:neocomplcache_dictionary_filetype_lists = {\ 'default' : '',
-		    \ 'vimshell' : $HOME.'/.vimshell_hist',
-		    \ 'scheme' : $HOME.'/.gosh_completions'
-			\ }
+    "" specail setting
+    set guioptions-=T "remove toolbar
+    set guioptions-=r "remove left scrollbar
+    set guioptions-=l "remove right scrollbar
+    set guifont=Monaco:h14 "great front
+
+    " Define dictionary.
+    let g:neocomplcache_dictionary_filetype_lists = {\ 'default' : '',
+		\ 'vimshell' : $HOME.'/.vimshell_hist',
+		\ 'scheme' : $HOME.'/.gosh_completions'
+		\ }
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Global setting of document
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"set line abosulte number 
+"set no compatible with vi
+no cp
+"set line absolute number 
 set relativenumber 
 "show the comment when we type it
 set showcmd 
@@ -46,7 +48,7 @@ set showmatch
 let mapleader =","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" => Appearence setting of document
+" => Appearance setting of document
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "special indent based on the file type
 filetype indent on 
@@ -69,6 +71,8 @@ set smartindent
 set smarttab
 " define smarttab length
 set shiftwidth=4
+" format the file
+map <leader>fm gg=G'.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -79,51 +83,33 @@ set nowb
 set noswapfile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" => NeocomplCache section
+" => Switching Between each window more easier
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+map <Space>h  <C-W>h
+map <Space>j  <C-W>j
+map <Space>k  <C-W>k
+map <Space>l  <C-W>l
 
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Quick fix key binding
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" next error
+map <leader>n :cn<CR>
+" previos error
+map <leader>m :cp<CR>
 
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+    if exists("g:qfix_win") && a:forced == 0
+	cclose
+	unlet g:qfix_win
+    else
+	copen 10
+	let g:qfix_win = bufnr("$")
+    endif
+endfunction
+nnoremap <leader>qf :QFix<CR>
 
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-	
-	
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTreeSection
@@ -174,15 +160,18 @@ map <leader>ff :FufFile<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Java Programming Section
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" set compiler for java for quick fix
+autocmd FileType java compiler javac
+
 "java compile => to bin directory in the upper directory
 autocmd FileType java map <leader>cp :call CompileJava()<CR>
 func! CompileJava()
-	:w
-	:!javac -d ../bin "%"
+    :w
+    :make -d ../bin "%"
 endfunc
 
 " run class => to bin directory in the upper directory
 autocmd FileType java map <leader>run :call RunClass()<CR>
-	func! RunClass()
-	:!java -cp "../bin" "%:t:r"
+func! RunClass()
+    :!java -cp "../bin" "%:t:r"
 endfunc
