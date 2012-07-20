@@ -35,3 +35,6 @@
 [submodule "bundle/ShowMark"]
 	path = bundle/ShowMark
 	url = git://github.com/vim-scripts/ShowMarks.git
+[submodule "bundle/speeddating"]
+	path = bundle/speeddating
+	url = git://github.com/tpope/vim-speeddating.git
