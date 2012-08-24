@@ -38,3 +38,6 @@
 [submodule "bundle/speeddating"]
 	path = bundle/speeddating
 	url = git://github.com/tpope/vim-speeddating.git
+[submodule "bundle/zencoding"]
+	path = bundle/zencoding
+	url = git://github.com/mattn/zencoding-vim.git
