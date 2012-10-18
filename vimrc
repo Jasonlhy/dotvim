@@ -117,7 +117,7 @@ nnoremap <leader>qf :QFix<CR>
 " open a tree
 map <leader>tr :NERDTreeFind<CR>
 "close tree when open a file
-let g:NERDTreeQuitOnOpen=1
+" let g:NERDTreeQuitOnOpen=1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
