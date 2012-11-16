@@ -21,6 +21,8 @@ if has("gui_running")
 		\ }
 endif
 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Global setting of document
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,10 +56,11 @@ let mapleader =","
 filetype indent on 
 "set 256 colors
 set t_Co=256 
-"set  colortheme
-colorscheme molokai 
 "display syntax in special color
+let g:solarized_termcolors=256
 syntax on 
+set background=dark
+colorscheme solarized
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
