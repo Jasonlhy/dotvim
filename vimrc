@@ -4,6 +4,11 @@
 call pathogen#infect()
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Powerline
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Powerline_symbols = 'fancy'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Zen Coding
@@ -72,6 +77,8 @@ set incsearch
 set showmatch
 " define key leader
 let mapleader =","
+" status bar
+set laststatus=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Appearance setting of document
