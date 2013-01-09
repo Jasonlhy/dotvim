@@ -77,7 +77,7 @@ set incsearch
 set showmatch
 " define key leader
 let mapleader =","
-" status bar
+" status bar always shown
 set laststatus=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,8 +105,15 @@ set smartindent
 set smarttab
 " define smarttab length
 set shiftwidth=4
+" use space instead of tab
+set expandtab
+" 4 space when << and >>
+set tabstop=4
+
 " format the file
 map <leader>fm gg=G'.
+" set cursorline
+set cursorline
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
