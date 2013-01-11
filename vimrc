@@ -67,8 +67,6 @@ filetype on
 filetype plugin on 
 "jk to exist non nomral mode
 map! jk <Esc><x> 
-"change to the directory of the file opening
-set autochdir
 "set hightlight when we do searching 
 set hlsearch
 " highlight matching when entering keyword
@@ -122,6 +120,11 @@ set cursorline
 set nobackup
 set nowb
 set noswapfile
+map <leader>cd :call ChangeDir()<CR>
+func! ChangeDir()
+    :cd %:p:h
+    :echo "Change to current Directory"
+endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Switching Between each window more easier
@@ -156,9 +159,10 @@ nnoremap <leader>qf :QFix<CR>
 " => NERDTreeSection
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " open a tree
-map <leader>tr :NERDTreeFind<CR>
-"close tree when open a file
-" let g:NERDTreeQuitOnOpen=1
+map <leader>nt :NERDTreeFind<CR>
+" Open the three starting from the current Directory
+let NERDTreeChDirMode=2
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,6 +201,7 @@ endfunc
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Find file 
 map <leader>ff :FufFile<CR>
+map <leader>fd :FufDir<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Java Programming Section
