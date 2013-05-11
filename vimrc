@@ -65,8 +65,7 @@ set showcmd
 filetype on 
 "make plugin on for some filetype
 filetype plugin on 
-"jk to exist non nomral mode
-map! jk <Esc><x> 
+
 "set hightlight when we do searching 
 set hlsearch
 " highlight matching when entering keyword
@@ -77,6 +76,26 @@ set showmatch
 let mapleader =","
 " status bar always shown
 set laststatus=2
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Super editing short cut in insert mode
+" => These short cuts is designed for entering the text continuely (Except jk)
+" => And reduce the amounts of button pressed 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"jk to exist non nomral mode
+map! jk <Esc><x> 
+"jj going to the head of non-blank character 
+map! jj <Esc>^
+"ll going to the end 
+map! jl <Esc>$
+
+"kk open an line below
+map! kk <Esc>o
+"kl insert ; EOL and open an line below
+map! kl <Esc>$a;<Esc>o
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Appearance setting of document
