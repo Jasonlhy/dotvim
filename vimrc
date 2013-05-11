@@ -15,6 +15,18 @@ let g:Powerline_symbols = 'fancy'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " from :h zencoding-customize-keymappings "
 let g:user_zen_expandabbr_key='<C-b>'
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => MatchTagAlways
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'eruby' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'php' : 1,
+    \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => NeoComplCache Setting Examples
