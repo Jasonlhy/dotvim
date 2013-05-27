@@ -88,7 +88,32 @@ set showmatch
 let mapleader =","
 " status bar always shown
 set laststatus=2
+" short cut to edit the files at the same director as the buffer
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Setting for convenience
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" bash-like filename completion
+set wildmenu
+set wildmode=list:longest
+" ignore these files when completing names and in Explorer
+set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
+
+" when the page starts to scroll, keep the cursor 3 lines from the top and the
+" bottom
+set scrolloff=3
+
+" allow switching edited buffers without saving
+set hidden
+
+" turn off annoying error bells
+set visualbell
+set noerrorbells
+
+" Make backspace delete over line breaks, or automatically-inserted indentation, or the place where insert mode started
+set backspace=indent,eol,start
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Super editing short cut in insert mode
