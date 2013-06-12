@@ -115,6 +115,19 @@ set noerrorbells
 " Make backspace delete over line breaks, or automatically-inserted indentation, or the place where insert mode started
 set backspace=indent,eol,start
 
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+"clearing highlighted search
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv 
+
+" For when you forget to sudo.. Really Write the file.
+cmap w!! w !sudo tee % >/dev/null
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Super editing short cut in insert mode
 " => These short cuts is designed for entering the text continuely (Except jk)
