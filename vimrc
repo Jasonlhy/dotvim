@@ -53,13 +53,10 @@ if has("gui_running")
     set guioptions-=T "remove toolbar
     set guioptions-=r "remove left scrollbar
     set guioptions-=l "remove right scrollbar
-    set guifont=Monaco:h14 "great front
+    set guifont=Monaco\ 14 "great front
 
     " Define dictionary.
-    let g:neocomplcache_dictionary_filetype_lists = {\ 'default' : '',
-		\ 'vimshell' : $HOME.'/.vimshell_hist',
-		\ 'scheme' : $HOME.'/.gosh_completions'
-		\ }
+    let g:neocomplcache_dictionary_filetype_lists = {'default' : '', 'vimshell' : $HOME.'/.vimshell_hist', 'scheme' : $HOME.'/.gosh_completions' }
 endif
 
 
@@ -109,8 +106,8 @@ set scrolloff=3
 set hidden
 
 " turn off annoying error bells
-set visualbell
-set noerrorbells
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 " Make backspace delete over line breaks, or automatically-inserted indentation, or the place where insert mode started
 set backspace=indent,eol,start
