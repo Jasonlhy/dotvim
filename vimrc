@@ -232,6 +232,21 @@ let NERDTreeChDirMode=2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" => Comments
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:comments_map_keys = 0
+
+" key-mappings for comment line in normal mode
+noremap  <silent> <C-L> :call CommentLine()<CR>
+" key-mappings for range comment lines in visual <Shift-V> mode
+vnoremap <silent> <C-L> :call RangeCommentLine()<CR>
+
+" key-mappings for un-comment line in normal mode
+noremap  <silent> <C-K> :call UnCommentLine()<CR>
+" key-mappings for range un-comment lines in visual <Shift-V> mode
+vnoremap <silent> <C-K> :call RangeUnCommentLine()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Taglist Section
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Only show the tags for active buffer, others are folded 
