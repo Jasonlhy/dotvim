@@ -53,7 +53,12 @@ if has("gui_running")
     set guioptions-=T "remove toolbar
     set guioptions-=r "remove left scrollbar
     set guioptions-=l "remove right scrollbar
-    set guifont=Monaco\ 14 "great front
+    
+    if has("gui_macvim") "support for MacVim
+        set guifont=Monaco:h14 
+    elseif has("gui_gnome") "support for gvim in Linux with gnome interface
+        set guifont=Monaco:\ 14 
+    endif
 
     " Define dictionary.
     let g:neocomplcache_dictionary_filetype_lists = {'default' : '', 'vimshell' : $HOME.'/.vimshell_hist', 'scheme' : $HOME.'/.gosh_completions' }
