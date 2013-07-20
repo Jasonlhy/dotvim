@@ -48,6 +48,8 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI Section
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Check the feature list with :h feature-list
+" Check what feature in your vim with :version
 if has("gui_running")
     "" specail setting
     set guioptions-=T "remove toolbar
@@ -56,8 +58,8 @@ if has("gui_running")
     
     if has("gui_macvim") "support for MacVim
         set guifont=Monaco:h14 
-    elseif has("gui_gnome") "support for gvim in Linux with gnome interface
-        set guifont=Monaco:\ 14 
+    elseif has("gui_gtk2") 
+        set guifont=Monaco\ 14 "support for gvim in Linux with gnome interface
     endif
 
     " Define dictionary.
