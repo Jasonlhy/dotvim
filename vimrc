@@ -32,7 +32,7 @@ let g:mta_filetypes = {
 " => NeoComplCache Setting Examples
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Disable AutoComplPop. 
-let g:acp_enableAtStartup = 0 
+let g:acp_enableAtStartup = 1
 " Use neocomplcache. 
 let g:neocomplcache_enable_at_startup = 1 
 " Use smartcase. 
@@ -82,6 +82,7 @@ filetype on
 "make plugin on for some filetype
 filetype plugin on 
 
+
 "set hightlight when we do searching 
 set hlsearch
 " highlight matching when entering keyword
@@ -104,6 +105,8 @@ set wildmenu
 set wildmode=list:longest
 " ignore these files when completing names and in Explorer
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
+" set of file name suffixes that will be given a lower priority when it comes to matching wildcards
+set suffixes+=.old
 
 " when the page starts to scroll, keep the cursor 3 lines from the top and the
 " bottom
@@ -131,6 +134,31 @@ vnoremap > >gv
 
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
+
+" Setting for reducing the typing of :w
+" default to save when vim is lost focus
+" & switch to normal mode
+" save the buffer (except read-only) when vim lost focus
+au FocusLost * silent! wa
+" go to normal mode when vim lost focus or change tab
+au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
+
+" normal focus mode
+" remove the auto save & nomral mode switch when vim is lost focus
+map <leader>nf :call NormalFocus()<CR>
+func! NormalFocus()
+    au! FocusLost,TabLeave
+    echo "Disable lazy focus!! No auto save & normal mode switch when lost focus"
+endfunc
+
+" lazy focus mode
+" gain back the auto save & nomral mode switch when vim is lose focus
+map <leader>lf :call LazyFocus()<CR>
+func! LazyFocus()
+    au FocusLost * silent! wa
+    au FocusLost,TabLeave * call feedkeys("\<C-\>\<C-n>")
+    echo "Enable lazy focus!! Enable auto save & nomral mode switch when lose focus"
+endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Super editing short cut in insert mode
