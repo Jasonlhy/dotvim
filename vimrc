@@ -160,6 +160,12 @@ func! LazyFocus()
     echo "Enable lazy focus!! Enable auto save & nomral mode switch when lose focus"
 endfunc
 
+" Remove multiple blank line
+" Only leave one blank line
+" \n stand for EOL
+" \r stand for return character to be inserted
+command RemoveMultipleLines %s/\n\{3,}/\r\r/g  
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Super editing short cut in insert mode
 " => These short cuts is designed for entering the text continuely (Except jk)
@@ -176,7 +182,8 @@ map! jl <Esc>$
 map! kk <Esc>o
 "kl insert ; EOL and open an line below
 map! kl <Esc>$a;<Esc>o
-
+" save and make the program
+map! <D-r> <Esc>:w<CR>:make<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -242,6 +249,11 @@ map <Space>l  <C-W>l
 map <leader>n :cn<CR>
 " previos error
 map <leader>m :cp<CR>
+
+" next error in insert mode
+imap <C-J> <Esc>:cn<CR>a
+" previous error in insert mode
+imap <C-K> <Esc>:cp<CR>a
 
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
@@ -337,3 +349,6 @@ autocmd FileType java map <leader>run :call RunClass()<CR>
 func! RunClass()
     :!java -cp "../bin" "%:t:r"
 endfunc
+
+nmap <silent> <leader>f <Plug>DashSearch
+

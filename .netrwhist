@@ -1,11 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/jason/Dropbox/TestingJavaCompile/src'
-let g:netrw_dirhist_2='/private/var/log/apache2'
-let g:netrw_dirhist_3='/Users/jason/Desktop/depot'
-let g:netrw_dirhist_4='/Users/jason/Dropbox/queue_job_demo/app/models'
-let g:netrw_dirhist_5='/Users/jason/.vim'
-let g:netrw_dirhist_6='/Users/jason/Desktop'
-let g:netrw_dirhist_7='/Users/jason/Desktop/Ruby on Rails.tmbundle'
-let g:netrw_dirhist_8='/Users/jason/Desktop'
-let g:netrw_dirhist_9='/Users/jason/Dropbox/IVE/IVE sem5/iOS/JasonLab8/JasonLab7.xcodeproj'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/jason'
+let g:netrw_dirhist_2='/Users/jason/Desktop/hellworldjava/guestbook./guestbook.-war/src/main/webapp/WEB-INF'
