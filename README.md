@@ -12,6 +12,6 @@ If you face any problems with the submodules, such as `no mapping xxxxx ,this ca
 
 This is due to two reasons:
 1. the submodule folder exsit, but there is no record of it inside `.gitmodules`
-2. the submodule folder doesn't exist, but there is a record inside `.gitmodules
+2. the submodule folder doesn't exist, but there is a record inside `.gitmodules file`
 
 Solution is to compare them by hand to keep both records consistent, then run the submoudle commands again.
