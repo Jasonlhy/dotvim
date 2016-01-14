@@ -11,8 +11,8 @@ The plugins are installed by pathogen, managed by git submodule
 If you face any problems with the submodules, such as `no mapping xxxxx` , this can casuse thegit submodule init to stop initialize remaining submoduless.
 
 This is due to two reasons:
-1. the submodule folder exsit, but there is no record of it inside `.gitmodules`
 
+1. the submodule folder exsit, but there is no record of it inside `.gitmodules`
 2. the submodule folder doesn't exist, but there is a record inside `.gitmodules file`
 
-3. Solution is to compare them by hand to keep both records consistent, then run the submoudle commands again.
+Solution is to compare them by hand to keep both records consistent, then run the submoudle commands again.
