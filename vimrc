@@ -166,6 +166,11 @@ endfunc
 " \r stand for return character to be inserted
 command RemoveMultipleLines %s/\n\{3,}/\r\r/g  
 
+" next line is really next line
+map j gj
+" previous line is really previous line
+map k gk
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " => Super editing short cut in insert mode
 " => These short cuts is designed for entering the text continuely (Except jk)
@@ -352,3 +357,10 @@ endfunc
 
 nmap <silent> <leader>f <Plug>DashSearch
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => External shell command
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map <silent> <leader>rq :call RemoveQuote()<CR>
+func! RemoveQuote()
+    :silent '<,'>!sed 's/\\"/"/g' | sed 's/echo[ ]*"\(.*\)";/\1/'
+endfunc
